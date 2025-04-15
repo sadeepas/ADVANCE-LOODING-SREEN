@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Modern Device Loading Screen</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+
+    .loader-container {
+      position: relative;
+      text-align: center;
+    }
+
+    /* Base device styling */
+    .device {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      animation: deviceAppear 5s infinite;
+    }
+
+    /* PC */
+    .pc {
+      width: 200px;
+      height: 130px;
+      background: #111;
+      border: 6px solid #00d1ff;
+      border-radius: 5px;
+      box-shadow: 0 0 15px rgba(0, 209, 255, 0.7);
+    }
+
+    .pc::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      width: 80px;
+      height: 10px;
+      background: #00d1ff;
+      border-radius: 5px;
+      transform: translateX(-50%);
+      box-shadow: 0 0 10px rgba(0, 209, 255, 0.7);
+    }
+
+    /* Tablet */
+    .tablet {
+      width: 130px;
+      height: 180px;
+      background: #111;
+      border: 6px solid #ff00ff;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(255, 0, 255, 0.7);
+      animation-delay: 1.2s;
+    }
+
+    /* Phone */
+    .phone {
+      width: 80px;
+      height: 150px;
+      background: #111;
+      border: 6px solid #00ff6a;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0, 255, 106, 0.7);
+      animation-delay: 2.4s;
+    }
+
+    /* Smartwatch */
+    .watch {
+      width: 90px;
+      height: 90px;
+      background: #111;
+      border: 6px solid #ffae00;
+      border-radius: 50%;
+      box-shadow: 0 0 15px rgba(255, 174, 0, 0.7);
+      animation-delay: 3.6s;
+    }
+
+    @keyframes deviceAppear {
+      0% { opacity: 0; transform: translateX(-50%) scale(0.7); }
+      5% { opacity: 1; transform: translateX(-50%) scale(1); }
+      25% { opacity: 1; transform: translateX(-50%) scale(1); }
+      35% { opacity: 0; transform: translateX(-50%) scale(1.2); }
+      100% { opacity: 0; }
+    }
+
+    /* Loading Text */
+    .loading-text {
+      margin-top: 220px;
+      font-size: 20px;
+      letter-spacing: 5px;
+      color: #fff;
+      animation: blink 1.2s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .pc { width: 150px; height: 100px; }
+      .pc::after { width: 60px; height: 8px; bottom: -16px; }
+      .tablet { width: 100px; height: 150px; }
+      .phone { width: 60px; height: 120px; }
+      .watch { width: 70px; height: 70px; }
+      .loading-text { margin-top: 180px; font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="loader-container">
+  <div class="device pc"></div>
+  <div class="device tablet"></div>
+  <div class="device phone"></div>
+  <div class="device watch"></div>
+  <div class="loading-text">LOADING...</div>
+</div>
+
+</body>
+</html>
